@@ -1,0 +1,174 @@
+@import './theme.css';
+
+/* Mobile-first form for CreateFood page */
+.create-food-page {
+  width: 100%;
+  padding: var(--space-3);
+  display: flex;
+  justify-content: center;
+  background: transparent;
+}
+
+.create-food-form {
+  width: 100%;
+  max-width: 720px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.cf-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.cf-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cf-label {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.cf-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.cf-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.06);
+}
+
+.cf-file {
+  padding: 6px 8px;
+}
+
+.cf-file-name {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* Simple, modern file chooser card with icon + text */
+input[type="file"].cf-file {
+  width: 100%;
+  height: 48px;
+  padding: 0;
+  border-radius: 12px;
+  border: 1px dashed var(--color-border);
+  background: linear-gradient(180deg, rgba(0,0,0,0.01), transparent);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* The platform button inside the file input — style it as a compact pill with icon */
+input[type="file"].cf-file::file-selector-button {
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: var(--color-accent);
+  font-weight: 700;
+  padding: 0 14px 0 44px; /* leave left space for icon */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* Add an inline SVG icon using background image positioned left inside the selector button */
+input[type="file"].cf-file::file-selector-button {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%232563eb'%20stroke-width='1.5'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%2019a2%202%200%20002%202h14a2%202%200%20002-2V7a2%202%200%2000-2-2h-3'%20/%3E%3Cpath%20d='M8%2013l2-2%206%206'%20/%3E%3Cpath%20d='M7%2017l-2-2'%20/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  background-size: 20px 20px;
+}
+
+/* Hover effect keeps it subtle */
+input[type="file"].cf-file:hover::file-selector-button {
+  color: var(--color-accent-hover);
+}
+
+/* Filename shown to the right or below depending on space */
+.cf-file-name {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* On larger screens keep filename inline to the right of the button */
+@media (min-width: 700px) {
+  input[type="file"].cf-file { height: 56px; }
+  .cf-file-name { margin-top: 0; margin-left: 12px; }
+}
+
+.cf-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.cf-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+.cf-btn {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cf-btn-primary {
+  background: var(--color-accent);
+  color: white;
+  border-color: transparent;
+}
+
+/* Larger screens: two-column layout with preview */
+@media (min-width: 700px) {
+  .create-food-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .cf-title {
+    grid-column: 1 / -1;
+  }
+
+  .cf-field {
+    gap: var(--space-2);
+  }
+
+  .cf-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
