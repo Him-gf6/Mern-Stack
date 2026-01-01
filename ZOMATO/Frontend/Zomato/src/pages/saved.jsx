@@ -8,7 +8,7 @@ function Saved() {
 
   useEffect(() => {
     // fetch saved items for authenticated user from backend
-    axios.get('http://https://mern-stack-backend-zoum.onrender.com/api/fooditems/saved', { withCredentials: true })
+    axios.get('https://mern-stack-backend-zoum.onrender.com/api/fooditems/saved', { withCredentials: true })
       .then((res) => {
         setItems(res.data.saved || [])
       })
@@ -20,7 +20,7 @@ function Saved() {
 
   const remove = (id) => {
     // call backend to unsave
-    axios.post('http://https://mern-stack-backend-zoum.onrender.com/api/fooditems/save', { foodId: id }, { withCredentials: true })
+    axios.post('https://mern-stack-backend-zoum.onrender.com/api/fooditems/save', { foodId: id }, { withCredentials: true })
       .then(() => {
         setItems(prev => prev.filter(i => i._id !== id))
       })
