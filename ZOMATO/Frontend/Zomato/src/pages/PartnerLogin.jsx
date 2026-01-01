@@ -12,7 +12,7 @@ function PartnerLogin() {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post('https://mern-stack-backend-zoum.onrender.com/api/auth/loginfoodpartner', { email, password }, { withCredentials: true });
+    const res = await axios.post('http://localhost:3000/api/auth/loginfoodpartner', { email, password }, { withCredentials: true });
 
     if (res?.data?.token) {
       localStorage.setItem('token', res.data.token);

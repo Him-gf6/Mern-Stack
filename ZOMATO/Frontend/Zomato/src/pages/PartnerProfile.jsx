@@ -10,7 +10,7 @@ function PartnerProfile() {
    const [videos, setVideos] = useState([])
 
   useEffect(()=>{
-    axios.get(`https://mern-stack-backend-zoum.onrender.com/api/foodpartner/${id}`,{withCredentials:true})
+    axios.get(`http://localhost:3000/api/foodpartner/${id}`,{withCredentials:true})
     .then((response)=>{
       setProfile(response.data.foodPartner);
       setVideos(response.data.foodPartner.foodItems);

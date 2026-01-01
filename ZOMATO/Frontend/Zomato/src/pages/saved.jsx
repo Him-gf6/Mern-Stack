@@ -20,7 +20,7 @@ function Saved() {
 
   const remove = (id) => {
     // call backend to unsave
-    axios.post('https://mern-stack-backend-zoum.onrender.com/api/fooditems/save', { foodId: id }, { withCredentials: true })
+    axios.post('http://localhost:3000/api/fooditems/save', { foodId: id }, { withCredentials: true })
       .then(() => {
         setItems(prev => prev.filter(i => i._id !== id))
       })

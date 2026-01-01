@@ -8,7 +8,7 @@ function Home() {
   const [interactions, setInteractions] = useState({});
 
   useEffect(() => {
-    axios.get('https://mern-stack-backend-zoum.onrender.com/api/fooditems', { withCredentials: true })
+    axios.get('http://localhost:3000/api/fooditems', { withCredentials: true })
       .then((response) => {
         const items = response.data.fooditems;
         setVideos(items);
