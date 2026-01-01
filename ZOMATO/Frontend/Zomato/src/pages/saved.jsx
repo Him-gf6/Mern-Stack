@@ -8,7 +8,7 @@ function Saved() {
 
   useEffect(() => {
     // fetch saved items for authenticated user from backend
-    axios.get('https://mern-stack-backend-zoum.onrender.com/api/fooditems/saved', { withCredentials: true })
+    axios.get('http://localhost:3000/api/fooditems/saved', { withCredentials: true })
       .then((res) => {
         setItems(res.data.saved || [])
       })
