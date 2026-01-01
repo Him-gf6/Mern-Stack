@@ -25,7 +25,7 @@ function CreateFood() {
     formData.append('description', description);
     formData.append('video', videoFile);
 
-    const response = await axios.post("http://localhost:3000/api/fooditems", formData, {withCredentials: true})
+    const response = await axios.post("http://https://mern-stack-backend-zoum.onrender.com/api/fooditems", formData, {withCredentials: true})
 
     console.log(response.data);
     navigate('/');

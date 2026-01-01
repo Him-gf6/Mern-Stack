@@ -16,7 +16,7 @@ function PartnerRegister() {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post('http://localhost:3000/api/auth/registerfoodpartner', {
+    await axios.post('http://https://mern-stack-backend-zoum.onrender.com/api/auth/registerfoodpartner', {
       name, email, password, businessName, address
     },{ withCredentials:true});
 
