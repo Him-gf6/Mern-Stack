@@ -26,7 +26,7 @@ function Home() {
         setInteractions(map);
 
         // also fetch saved items to mark saved state for current user
-        axios.get('https://mern-stack-backend-zoum.onrender.com/api/fooditems/saved', { withCredentials: true })
+        axios.get('http://localhost:3000/api/fooditems/saved', { withCredentials: true })
           .then((r) => {
             const saved = r.data.saved || [];
             setInteractions(prev => {
@@ -73,7 +73,7 @@ function Home() {
       return { ...prev, [id]: { ...cur, saved: willSave, saves, saving: true } };
     });
 
-    axios.post('https://mern-stack-backend-zoum.onrender.com/api/fooditems/save', { foodId: id }, { withCredentials: true })
+    axios.post('http://localhost:3000/api/fooditems/save', { foodId: id }, { withCredentials: true })
       .then((res) => {
         const savedNow = res.status === 201;
         setInteractions(prev => {
