@@ -13,7 +13,7 @@ function UserRegister() {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post('http://https://mern-stack-backend-zoum.onrender.com/api/auth/register', {
+    await axios.post('https://mern-stack-backend-zoum.onrender.com/api/auth/register', {
       name, email, password
     },{ withCredentials:true});
 
