@@ -8,24 +8,31 @@ function Saved() {
 
   useEffect(() => {
     // fetch saved items for authenticated user from backend
-    axios.get('http://localhost:3000/api/fooditems/saved', { withCredentials: true })
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    axios.get('http://localhost:3000/api/fooditems/saved', { withCredentials: true, headers })
       .then((res) => {
         setItems(res.data.saved || [])
       })
       .catch((err) => {
-        console.error('Failed to fetch saved items', err)
+        console.error('Failed to fetch saved items', err?.response?.data || err)
         setItems([])
       })
   }, [])
 
   const remove = (id) => {
-    // call backend to unsave
-    axios.post('http://localhost:3000/api/fooditems/save', { foodId: id }, { withCredentials: true })
+    // call backend to unsave (POST /save toggles saved state)
+    // call backend to unsave (include Authorization header if available)
+    const token = localStorage.getItem('token');
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+    axios.post('http://localhost:3000/api/fooditems/save', { foodId: id }, { withCredentials: true, headers })
       .then(() => {
         setItems(prev => prev.filter(i => i._id !== id))
       })
       .catch(err => {
-        console.error('Failed to remove saved item', err)
+        console.error('Failed to remove saved item', err?.response?.data || err)
       })
   }
 
