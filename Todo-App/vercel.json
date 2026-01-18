@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Backend/Frontend/todo/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "Backend/Frontend/todo/dist"
+      }
+    },
+    {
+      "src": "Backend/app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "Backend/app.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "Backend/Frontend/todo/dist/$1"
+    }
+  ]
+}
